@@ -1,0 +1,32 @@
+{{#if this.shouldShow}}
+  {{!
+    @outletArgs.attrs.topic is the legacy version. Can be removed once core v3.2.0.beta4 is released
+    and this Theme's compatibility file is updated
+  }}
+  <ul
+    class="custom-header-links
+      {{if
+        (or @outletArgs.topic @outletArgs.attrs.topic)
+        'custom-header-links--hide-links'
+      }}"
+  >
+    {{#each this.links as |link|}}
+      <li
+        class="headerLink
+          {{link.device}}
+          {{link.keepOnScrollClass}}
+          {{link.locale}}
+          {{link.linkClass}}
+          {{link.keepOnScroll}}"
+      >
+        <a
+          title={{link.anchorAttributes.title}}
+          href={{link.anchorAttributes.href}}
+          target={{link.anchorAttributes.target}}
+        >
+          {{link.linkText}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{/if}}

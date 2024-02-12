@@ -494,3 +494,234 @@ img {
 } 
 
 
+//custom header Links//
+.before-header-panel-outlet {
+    display: flex;
+  }
+  
+  @if $links_position == "right" {
+    .before-header-panel-outlet {
+      margin-left: auto;
+      + .panel {
+        margin-left: 0;
+      }
+    }
+  }
+  
+  .custom-header-links {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    @if $links_position == "left" {
+      margin-left: 1em;
+      &--hide-links {
+        display: none;
+      }
+    }
+  
+    .headerLink {
+      list-style: none;
+      a {
+        padding: 0.35em 0.6em;
+        color: var(--header_primary);
+        font-size: var(--font-up-1);
+      }
+    }
+  
+    &--hide-links {
+      .headerLink:not(.headerLink--keep) {
+        display: none;
+      }
+    }
+  }
+  
+  .desktop-view .headerLink--vmo,
+  .mobile-view .headerLink--vdo {
+    display: none;
+  }
+  
+  // for compatibility with the discourse-header-search component
+  
+  .floating-search-input-wrapper {
+    flex: 1 1 auto;
+    margin: 0 1em;
+    @if $links_position == "left" {
+      order: 2;
+    }
+  
+    .floating-search-input {
+      width: 100%;
+      margin: 0;
+    }
+  
+    .search-menu {
+      width: 100% !important; // overrides very specific selector
+    }
+  }
+  @import "common/foundation/mixins";
+
+$max-width: 600px;
+
+.display-search-banner {
+  #main-outlet {
+    padding-top: 0;
+  }
+}
+
+.search-banner {
+  background-image: var(--custom-bg);
+
+  @if $tile-background_image == "true" {
+    background-size: auto;
+  } @else {
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+// hide search icon from default search menu
+.search-menu.glimmer-search-menu .search-icon {
+  display: none;
+}
+
+.custom-search-banner-wrap {
+  box-sizing: border-box;
+  position: relative;
+  padding: 2.5em 0 3em;
+  margin: 1em auto;
+  @include breakpoint(tablet) {
+    padding: 1em 8px 1.25em;
+    margin-top: 0.5em;
+  }
+
+  > div {
+    margin: 0 auto;
+    max-width: $max-width;
+  }
+
+  .search-menu {
+    display: flex;
+
+    .search-menu-container {
+      width: 100%;
+    }
+  }
+
+  .menu-panel-results .menu-panel {
+    position: unset;
+    padding: 0;
+  }
+
+  .d-icon-search {
+    margin: 0;
+  }
+  .browser-search-tip {
+    display: none;
+  }
+  .search-input input#search-term[type="text"] {
+    margin: 0;
+    width: 100%;
+  }
+
+  .search-input {
+    flex: 1 1 auto;
+    margin: 0;
+    .searching {
+      // spinner
+      top: 0.4em;
+      right: 2.25em;
+    }
+  }
+
+  h1 {
+    font-size: var(--font-up-6);
+    line-height: $line-height-medium;
+    @include breakpoint(tablet) {
+      font-size: var(--font-up-4);
+    }
+  }
+
+  h1,
+  p {
+    text-align: center;
+  }
+
+  .btn.search-icon:not(.has-search-button-text) {
+    z-index: 2;
+    background: transparent;
+    line-height: 1;
+    color: var(--primary-medium);
+    height: 100%;
+    padding-right: 0.25em;
+    .discourse-no-touch & {
+      &:hover {
+        background: transparent;
+        color: var(--primary);
+        .d-icon {
+          color: currentColor;
+        }
+      }
+    }
+  }
+  .btn.search-icon.has-search-button-text {
+    order: 2;
+    margin-left: 0.5em;
+    column-gap: 0.5em;
+    background-color: var(--tertiary);
+    color: var(--secondary);
+    flex: none;
+    &:hover {
+      background-color: var(--tertiary-hover);
+    }
+    .d-icon {
+      color: var(--secondary);
+    }
+  }
+
+  // hide the search icon when a search context is selected
+  // eg when searching in a topic
+  .search-input .search-context + .search-icon:not(.has-search-button-text),
+  .search-input .search-context ~ .search-icon:not(.has-search-button-text) {
+    display: none;
+  }
+
+  .results {
+    box-sizing: border-box;
+    background: var(--secondary);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    z-index: 9;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    top: 2.75em;
+    right: 0;
+    padding: 0.5em;
+    @include breakpoint(mobile-extra-large) {
+      width: 100%;
+    }
+    ul,
+    ol {
+      list-style-type: none;
+      margin: 0;
+    }
+    .d-icon-search {
+      display: none;
+    }
+  }
+
+  .searching a.show-advanced-search {
+    display: none;
+  }
+
+  .search-link .d-icon {
+    color: var(--primary-medium);
+  }
+
+  span.keyword {
+    color: var(--primary);
+  }
+}
+
+// these are add-on styles controlled by settings
+@import "special-styles";

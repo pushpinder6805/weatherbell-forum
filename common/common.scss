@@ -54,7 +54,8 @@
     background-image: var(--custom-bg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 20em;
+    height: 20em !important;
+    margin-top: -15px !important;
 }
 //footer//
 @font-face { 

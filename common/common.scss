@@ -1,6 +1,16 @@
 body.homepage #main-outlet {
     padding-top: 1.5em !important; /* Adjust this value as needed */
 }
+/* Apply CSS changes only to the specified URL */
+@media screen and (min-width: 768px) {
+  body:not(.user-page):not(.search-page):not(.admin-dashboard-page):not(.user-preferences-page):not(.about-page):not(.faq-page):not(.latest-page) {
+    /* Reset padding for #main-outlet */
+    #main-outlet {
+      padding-top: 1.5em !important;
+    }
+  }
+}
+
 .btn-primary {
     border-radius: 8px;
     background-color: #FF6900;

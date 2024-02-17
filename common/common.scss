@@ -1,3 +1,9 @@
+#main-outlet {
+    padding-top: 1.5em !important; /* Adjust this value as needed */
+}
+.navigation-container {
+    margin-top: 21px !important;
+}
 .btn-primary {
     border-radius: 8px;
     background-color: #FF6900;
@@ -10,7 +16,7 @@
     padding: 0.35em 0.6em;
     position: relative;
     color: #fff;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 11px;
     top: 7px;
 }
@@ -42,7 +48,7 @@
 .custom-header-links .headerLink a {
     padding: 0.35em 0.6em !important;
     color: #ffffff !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
 #list-area {
     background: white;

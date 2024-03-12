@@ -24,6 +24,11 @@
   background: white !important;
 }
 .list-controls {
+  /* Adjust the margin-top and other positioning properties to align with before-topic-list-body */
+  margin-top: 0; /* Aligns the top edge of the sidebar with the top edge of before-topic-list-body */
+}
+
+/*.list-controls {
   margin-left: -11px;
   width: 108.4%;
   margin-top: -37px;
@@ -33,7 +38,7 @@ border-top-right-radius: 10px;
 border-bottom-left-radius: 0;
 border-bottom-right-radius: 0;
 
-}
+} */
 .navigation-container {;
   margin-top: 10px;
   margin-left: 10px;
